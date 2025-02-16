@@ -14,6 +14,17 @@ export const ThemeToggle = () => {
     "theme-light" | "dark" | "system"
   >("theme-light");
 
+  const themeButton = {
+    light: {
+      label: "Light mode",
+      icon: <Sun />,
+    },
+    dark: {
+      label: "Dark mode",
+      icon: <Moon />,
+    },
+  };
+
   React.useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains("dark");
     setThemeState(isDarkMode ? "dark" : "theme-light");
@@ -30,10 +41,13 @@ export const ThemeToggle = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+        <Button>
+          <div className="flex gap-3 items-center">
+            {theme === "dark" ? themeButton.light.icon : themeButton.dark.icon}
+            {theme === "dark"
+              ? themeButton.light.label
+              : themeButton.dark.label}
+          </div>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

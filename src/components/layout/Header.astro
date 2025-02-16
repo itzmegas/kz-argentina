@@ -1,13 +1,14 @@
 ---
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Avatar } from "@/components/ui";
+import Flex from "./Flex.astro";
 ---
 
-<header class="w-full p-4 flex justify-between">
+<header class="flex justify-between items-center w-full p-4">
   <h2 class="font-bold">Xtreme-Jumps Clone</h2>
 
-  <div class="flex gap-5">
+  <Flex class="gap-5">
     <ThemeToggle client:load />
     <Avatar client:load />
-  </div>
+  </Flex>
 </header>

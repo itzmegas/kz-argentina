@@ -3,7 +3,6 @@ import Flex from "@/components/layout/Flex.astro";
 import Stack from "@/components/layout/Stack.astro";
 import Layout from "./Layout.astro";
 import Header from "@/components/layout/Header.astro";
-
 import { TopFive } from "@/components/TopFive";
 import { getTopFive } from "@/api";
 
@@ -13,8 +12,8 @@ const data = await getTopFive();
 <Layout>
   <Stack>
     <Header />
-    <Flex className="justify-between w-full">
-      <Stack> Side left </Stack>
+    <Flex className="justify-between w-full p-4">
+      <Stack>SIDE LEFT</Stack>
       <Stack> <slot /> </Stack>
       <Stack>
         <TopFive client:load data={data} />

@@ -2,7 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/*Realtime Colors*/
 @layer base {
+  :root {
+    --background: 240 20% 96%;
+    --foreground: 0 0% 7%;
+    --card: 234, 45%, 28%, 5%;
+    --card-foreground: 0 0% 7%;
+    --popover: 240 20% 96%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 234 45% 28%;
+    --primary-foreground: 240 20% 96%;
+    --secondary: 234 67% 68%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 240 20% 20%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 234 22% 36%;
+    --accent-foreground: 240 20% 96%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 7%;
+    --border: 0 0% 85%;
+    --input: 240 20% 20%;
+    --ring: 235 22% 40%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 20% 4%;
+    --foreground: 0 0% 93%;
+    --card: 234, 45%, 72%, 5%;
+    --card-foreground: 0 0% 93%;
+    --popover: 240 20% 4%;
+    --popover-foreground: 0 0% 93%;
+    --primary: 234 45% 72%;
+    --primary-foreground: 240 20% 4%;
+    --secondary: 234 67% 32%;
+    --secondary-foreground: 0 0% 93%;
+    --muted: 240 20% 80%;
+    --muted-foreground: 0 0% 93%;
+    --accent: 234 22% 64%;
+    --accent-foreground: 240 20% 4%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 10%;
+    --border: 240 25% 17%;
+    --input: 240 20% 80%;
+    --ring: 235 22% 60%;
+  }
+}
+/*DEFAULT VALUES */
+/* @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -56,7 +104,8 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
+} */
+
 @layer base {
   * {
     @apply border-border;

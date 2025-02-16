@@ -5,18 +5,17 @@ export type TopFiveResponse = {
   countryTop5: TopCountry[];
 };
 
-type AdaptedTopPlayer = {
-  playerId: number;
+type AdaptedTop = {
   country: string;
   numberOfRecords: number;
   name: string;
 };
 
-type AdaptedTopCountry = {
-  country: string;
-  name: string;
-  numberOfRecords: number;
+export type AdaptedTopPlayer = AdaptedTop & {
+  playerId: number;
 };
+
+export type AdaptedTopCountry = AdaptedTop;
 
 export type AdaptedTopFiveResponse = {
   playerTop5: AdaptedTopPlayer[];
