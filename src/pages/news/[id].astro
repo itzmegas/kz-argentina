@@ -1,0 +1,24 @@
+---
+import { getNews } from "@/api";
+import Stack from "@/components/layout/Stack.astro";
+import AppLayout from "@/layouts/AppLayout.astro";
+
+export async function getStaticPaths() {
+  const lastNews = await getNews();
+
+  return lastNews.map((news) => ({
+    params: { id: news.id },
+    props: { news },
+  }));
+}
+
+const { news } = Astro.props;
+const { title, author, htmlContent } = news;
+---
+
+<AppLayout>
+  <Stack>
+    <h2>{title}</h2>
+    <p>Written by {author}</p>
+  </Stack>
+</AppLayout>

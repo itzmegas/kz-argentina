@@ -13,10 +13,15 @@ const getRequestUrl = (url: string) =>
 
 export const get = async <T = unknown, D = unknown>(
   url: string,
-  // options?: AxiosRequestConfig<D>,
+  options?: { params: Record<string, any> },
 ): Promise<T> => {
   const requestUrl = getRequestUrl(url);
-  const result = await fetch(requestUrl /* options */);
+
+  const params = new URLSearchParams(options ? options.params : {});
+
+  const result = await fetch(
+    `${requestUrl}?${!params ? "" : params.toString()}`,
+  );
 
   if (result && !result.ok) {
     throw new Error(result.statusText);

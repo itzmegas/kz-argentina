@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/shadcn/card";
 import { API_FLAGS_URL } from "astro:env/client";
 import { isOddNumber } from "@/utils";
+import { ChevronRight } from "lucide-react";
+import { Button } from "./ui/shadcn/button";
 
 type TopFiveProps = {
   data: AdaptedTopFiveResponse;
@@ -26,17 +28,31 @@ export const TopFive = (props: TopFiveProps) => {
     data.playerTop5,
   );
 
-  setInterval(
-    () => setTop(top === data.countryTop5 ? data.playerTop5 : data.countryTop5),
+  const isCountry = top === data.countryTop5;
+
+  /*  setInterval(
+    () => setTop(isCountry ? data.playerTop5 : data.countryTop5),
     1000 * 10,
-  );
+  ); */
 
   return (
-    <Card>
+    <Card className="min-w-64">
       <CardHeader>
-        <CardTitle className="text-center">Players</CardTitle>
+        <CardTitle className="flex items-center justify-center gap-5">
+          {isCountry ? "Países" : "Jugadores"}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="p-2 rounded-2xl hover:bg-card hover:text-black"
+            onClick={() =>
+              setTop(isCountry ? data.playerTop5 : data.countryTop5)
+            }
+          >
+            <ChevronRight />
+          </Button>
+        </CardTitle>
       </CardHeader>
-      <CardContent className="grid justify-center items-center gap-2">
+      <CardContent className="flex-col justify-center items-center p-0">
         {top.map((item, i) => {
           const isPlayer = item.hasOwnProperty("playerId");
           return (
@@ -44,7 +60,7 @@ export const TopFive = (props: TopFiveProps) => {
               key={
                 isPlayer ? (item as AdaptedTopPlayer).playerId : item.country
               }
-              className={`flex justify-between items-center min-w-52 text-sm ${isOddNumber(i) ? "bg-transparent" : "bg-slate-300"}`}
+              className={`flex justify-between items-center text-sm px-4 py-1 ${isOddNumber(i) ? "bg-transparent" : "bg-striped"}`}
             >
               <div>
                 <img

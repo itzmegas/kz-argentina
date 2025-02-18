@@ -1,4 +1,3 @@
-import { API_BASE_URL } from "astro:env/server";
 import { get } from "../base";
 import { adaptTopFive } from "./adapt";
 import type { TopFiveResponse } from "./types";
