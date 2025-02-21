@@ -3,8 +3,10 @@ import AppLayout from "@/layouts/AppLayout.astro";
 import Layout from "../layouts/Layout.astro";
 import { getNews } from "@/api";
 import Stack from "@/components/layout/Stack.astro";
+import { News } from "@/components/News";
 
 const lastNews = await getNews();
+console.log("🚀 ~ lastNews:", lastNews);
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -35,5 +37,13 @@ const lastNews = await getNews();
 </script>
 
 <AppLayout>
-  <Stack> {lastNews.map((itemNews) => <h2>{itemNews.title}</h2>)}</Stack>
+  <Stack gap="14">
+    {
+      lastNews.map((itemNews) => (
+        <News title={itemNews.title}>
+          <p set:html={itemNews.htmlContent} />
+        </News>
+      ))
+    }</Stack
+  >
 </AppLayout>

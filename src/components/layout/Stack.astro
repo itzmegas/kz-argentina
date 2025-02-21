@@ -1,8 +1,9 @@
 ---
 import { cn } from "@/lib/utils";
 
-const { className } = Astro.props;
-const defaultClass = "flex-col gap-20 h-full";
+const { className, gap } = Astro.props;
+
+const defaultClass = `flex-col space-y-${gap ?? 5} h-full`;
 ---
 
 <div class={cn(defaultClass, className)}>
