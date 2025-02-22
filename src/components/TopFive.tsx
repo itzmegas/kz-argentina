@@ -36,7 +36,7 @@ export const TopFive = (props: TopFiveProps) => {
   ); */
 
   return (
-    <Card className="min-w-64">
+    <Card>
       <CardHeader>
         <CardTitle className="flex items-center justify-center gap-5">
           {isCountry ? "Países" : "Jugadores"}

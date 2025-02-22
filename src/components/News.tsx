@@ -6,9 +6,5 @@ interface NewsProps {
 }
 
 export const News = ({ title, children }: NewsProps) => {
-  return (
-    <div className="flex-col gap-4">
-      <AppCard title={title}>{children}</AppCard>
-    </div>
-  );
+  return <AppCard title={title}>{children}</AppCard>;
 };

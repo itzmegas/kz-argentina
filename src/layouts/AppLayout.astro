@@ -12,14 +12,19 @@ const data = await getTopFive();
 ---
 
 <Layout>
-  <Stack>
+  <div class="grid grid-rows-[auto_minmax(0px, 1fr)_auto] min-h-dvh">
     <Header />
-    <Flex className="justify-between w-full p-4 gap-5">
-      <Stack className="min-w-48">SIDE LEFT</Stack>
-      <Stack> <slot /> </Stack>
-      <Stack>
-        <TopFive client:load data={data} />
-      </Stack>
-    </Flex>
-  </Stack>
+    <div class="min-w-0 max-w-screen-xl mx-auto overflow-hidden px-5">
+      <div class="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-5">
+        <div class="">SIDE LEFT</div>
+        <div class="min-w-0">
+          <slot />
+        </div>
+        <div class="">
+          <TopFive client:load data={data} />
+        </div>
+      </div>
+    </div>
+    <div>footer</div>
+  </div>
 </Layout>
